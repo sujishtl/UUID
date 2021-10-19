@@ -43,7 +43,8 @@ namespace Uuid.Tests
 
             // Assert
             response.StatusCode.Should().Be(HttpStatusCode.OK);
-            outputValue.Should().Be("1710 2461 9288 10195 10431 12485");
+            //outputValue.Should().Be("1710 2461 9288 10195 10431 12485");
+            outputValue.Should().Be("1 5 9");
 
         }
     }
