@@ -20,5 +20,5 @@ services:
       [
         "dotnet",
         "test",
-        "../test/Uuid.Tests.csproj"
+        "../test/UUID.Tests.csproj"
       ]
