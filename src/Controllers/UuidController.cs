@@ -28,20 +28,15 @@ namespace DotnetDockerIntegrationTests.Controllers
         public async Task<IActionResult> GetSequence(string sequence)
         {
             string[] sequenceSplits = Regex.Split(sequence, " ");
-
       
-            int[] ints = Array.ConvertAll(sequenceSplits, int.Parse);
-
-            Array.Sort(ints);
+            int[] seqNumbers = Array.ConvertAll(sequenceSplits, int.Parse);           
 
             string returnValue="";
-            foreach(var x in ints)
+            foreach(var x in seqNumbers)
             {
                 returnValue = returnValue + " " + x;
             }
-
-
-            return Ok("1 5 9");
+            return Ok(returnValue.Trim());
         }
 
     }
