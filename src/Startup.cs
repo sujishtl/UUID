@@ -54,13 +54,8 @@ namespace Uuid
             {
                 endpoints.MapControllers();
             });
-
-            Migrate(app);
         }
 
-        private static void Migrate(IApplicationBuilder app)
-        {
-            using var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
-        }
+ 
     }
 }

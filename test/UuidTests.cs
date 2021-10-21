@@ -41,9 +41,7 @@ namespace Uuid.Tests
         public async Task GetSequence_MultipleDigitsArray_ShouldReturn6Numbers()
         {
             // Arrange
-            var sequence = "923 11613 30483 19569 24201 13461 1189 30793 8848 16914 16053 21700 22116 3852 20909 5231 31469 3862 16353 " +
-                "22813 28735 4421 3618 32303 9932 31892 7823 22547 28888 11143 11695 3339 2094 11023 9661 27440 7186 24750 15427 24502 " +
-                "31606 23515 3563 29553 12145 22184 11409 28824 6636 10658 21404 5578 27807 14073 13967 31310 3132 4321 7643 1951 13289 24375 17912 11304";
+            string sequence = File.ReadAllText("TestCase2.txt");
 
             // Act
             var outputValue = await GetSequence(sequence);
@@ -52,12 +50,12 @@ namespace Uuid.Tests
             outputValue.Should().Be("1710 2461 9288 10195 10431 12485");
 
         }
-
+        
         [Fact(DisplayName = "Test Case 03")]
         public async Task GetSequence_MultipleDigitsArray_ShouldReturn8Numbers()
         {
             // Arrange
-            string sequence = File.ReadAllText(@".\Files\TestCase3.txt");
+            string sequence = File.ReadAllText("TestCase3.txt");
 
             // Act
             var outputValue = await GetSequence(sequence);
@@ -71,7 +69,7 @@ namespace Uuid.Tests
         public async Task GetSequence04_MultipleDigitsArray_ShouldReturn4Numbers()
         {
             // Arrange
-            string sequence = File.ReadAllText(@".\Files\TestCase4.txt");
+            string sequence = File.ReadAllText("TestCase4.txt");
 
             // Act
             var outputValue = await GetSequence(sequence);
@@ -85,7 +83,7 @@ namespace Uuid.Tests
         public async Task GetSequence05_MultipleDigitsArray_ShouldReturn4Numbers()
         {
             // Arrange
-            string sequence = File.ReadAllText(@".\Files\TestCase5.txt");
+            string sequence = File.ReadAllText("TestCase5.txt");
 
             // Act
             var outputValue = await GetSequence(sequence);
@@ -99,7 +97,7 @@ namespace Uuid.Tests
         public async Task GetSequence06_MultipleDigitsArray_ShouldReturn4Numbers()
         {
             // Arrange
-            string sequence = File.ReadAllText(@".\Files\TestCase6.txt");
+            string sequence = File.ReadAllText("TestCase6.txt");
 
             // Act
             var outputValue = await GetSequence(sequence);
@@ -113,7 +111,7 @@ namespace Uuid.Tests
         public async Task GetSequence07_MultipleDigitsArray_ShouldReturn6Numbers()
         {
             // Arrange
-            string sequence = File.ReadAllText(@".\Files\TestCase7.txt");
+            string sequence = File.ReadAllText("TestCase7.txt");
 
             // Act
             var outputValue = await GetSequence(sequence);
@@ -127,7 +125,7 @@ namespace Uuid.Tests
         public async Task GetSequence08_MultipleDigitsArray_ShouldReturn6Numbers()
         {
             // Arrange
-            string sequence = File.ReadAllText(@".\Files\TestCase8.txt");
+            string sequence = File.ReadAllText("TestCase8.txt");
 
             // Act
             var outputValue = await GetSequence(sequence);
@@ -141,7 +139,7 @@ namespace Uuid.Tests
         public async Task GetSequence09_MultipleDigitsArray_ShouldReturn8Numbers()
         {
             // Arrange
-            string sequence = File.ReadAllText(@".\Files\TestCase9.txt");
+            string sequence = File.ReadAllText("TestCase9.txt");
 
             // Act
             var outputValue = await GetSequence(sequence);
@@ -150,12 +148,12 @@ namespace Uuid.Tests
             outputValue.Should().Be("918 1089 5133 7725 18035 24605 26716 27095");
 
         }
-
+        
         [Fact(DisplayName = "Test Case 10")]
         public async Task GetSequence10_MultipleDigitsArray_ShouldReturn3Numbers()
         {
             // Arrange
-            string sequence = File.ReadAllText("6 2 4 6 1 5 9 2");
+            var sequence = "6 2 4 6 1 5 9 2";
 
             // Act
             var outputValue = await GetSequence(sequence);
@@ -169,7 +167,7 @@ namespace Uuid.Tests
         public async Task GetSequence11_MultipleDigitsArray_ShouldReturn3Numbers()
         {
             // Arrange
-            string sequence = File.ReadAllText("6 2 4 3 1 5 9");
+            var sequence = "6 2 4 3 1 5 9";
 
             // Act
             var outputValue = await GetSequence(sequence);

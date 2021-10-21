@@ -8,6 +8,7 @@ namespace Uuid.Validators
         public SequenceEntryValidator()
         {
             RuleFor(x => x).NotNull().NotEmpty();
+            RuleFor(x => x).Matches(@"[0-9 ]+");
         }
     }
 }
