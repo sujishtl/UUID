@@ -38,23 +38,21 @@ namespace DotnetDockerIntegrationTests.Controllers
                 string[] sequenceSplits = Regex.Split(sequence.Trim(), " ");
                 int[] seqNumbers = Array.ConvertAll(sequenceSplits, int.Parse);
                 int currentNumber = 0;
-                List<int> longSeq = new List<int>();
-                List<int> finalLongSeq = new List<int>();
-
+                List<int> longSeq = new();
+                List<int> finalLongSeq = new();
+                
                 for (int i = 0; i < seqNumbers.Length; i++)
                 {
                     if ((i + 1) == seqNumbers.Length)
                     {
                         if (currentNumber < seqNumbers[i])
                         {
-                            currentNumber = seqNumbers[i];
-                            longSeq.Add(currentNumber);
+                            currentNumber = GetNextNumber(seqNumbers, longSeq, i);
                         }
                     }
                     else
                     {
-                        currentNumber = seqNumbers[i];
-                        longSeq.Add(currentNumber);
+                        currentNumber = GetNextNumber(seqNumbers, longSeq, i);
                     }
                     if (((i + 1) == seqNumbers.Length) || currentNumber > seqNumbers[i + 1])
                     {
@@ -67,13 +65,7 @@ namespace DotnetDockerIntegrationTests.Controllers
                         longSeq.Clear();
                     }
                 }
-
-                string returnValue = "";
-                foreach (var x in finalLongSeq)
-                {
-                    returnValue = returnValue + " " + x;
-                }
-                return Ok(returnValue.Trim());
+                return Ok(string.Join(" ", finalLongSeq)?.Trim());
             }
             catch(Exception ex)
             {
@@ -81,6 +73,12 @@ namespace DotnetDockerIntegrationTests.Controllers
             }
         }
 
+        private static int GetNextNumber(int[] seqNumbers, List<int> longSeq, int i)
+        {
+            int currentNumber = seqNumbers[i];
+            longSeq.Add(currentNumber);
+            return currentNumber;
+        }
     }
 
 }
