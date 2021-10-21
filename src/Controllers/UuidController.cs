@@ -29,45 +29,56 @@ namespace DotnetDockerIntegrationTests.Controllers
         [HttpGet("GetSequence/{sequence}")]
         public async Task<IActionResult> GetSequence(string sequence)
         {
-            string[] sequenceSplits = Regex.Split(sequence, " ");
-            int[] seqNumbers = Array.ConvertAll(sequenceSplits, int.Parse);
-            int number1 = 0;
-            List<int> longSeq = new List<int>();
-            List<int> finalLongSeq = new List<int>();
+            var validationResult = await _validator.ValidateAsync(sequence);
+            if (!validationResult.IsValid)
+                return BadRequest("Please give the correct input");
 
-            for (int i = 0; i < seqNumbers.Length; i++)
+            try
             {
-                if ((i + 1) == seqNumbers.Length)
+                string[] sequenceSplits = Regex.Split(sequence.Trim(), " ");
+                int[] seqNumbers = Array.ConvertAll(sequenceSplits, int.Parse);
+                int currentNumber = 0;
+                List<int> longSeq = new List<int>();
+                List<int> finalLongSeq = new List<int>();
+
+                for (int i = 0; i < seqNumbers.Length; i++)
                 {
-                    if (number1 < seqNumbers[i])
+                    if ((i + 1) == seqNumbers.Length)
                     {
-                        number1 = seqNumbers[i];
-                        longSeq.Add(number1);
+                        if (currentNumber < seqNumbers[i])
+                        {
+                            currentNumber = seqNumbers[i];
+                            longSeq.Add(currentNumber);
+                        }
+                    }
+                    else
+                    {
+                        currentNumber = seqNumbers[i];
+                        longSeq.Add(currentNumber);
+                    }
+                    if (((i + 1) == seqNumbers.Length) || currentNumber > seqNumbers[i + 1])
+                    {
+                        if (longSeq.Count > finalLongSeq.Count)
+                        {
+                            finalLongSeq.Clear();
+                            finalLongSeq.AddRange(longSeq);
+
+                        }
+                        longSeq.Clear();
                     }
                 }
-                else
-                {
-                    number1 = seqNumbers[i];
-                    longSeq.Add(number1);
-                }
-                if (((i + 1) == seqNumbers.Length) || number1 > seqNumbers[i + 1])
-                {
-                    if (longSeq.Count > finalLongSeq.Count)
-                    {
-                        finalLongSeq.Clear();
-                        finalLongSeq.AddRange(longSeq);
 
-                    }
-                    longSeq.Clear();
+                string returnValue = "";
+                foreach (var x in finalLongSeq)
+                {
+                    returnValue = returnValue + " " + x;
                 }
+                return Ok(returnValue.Trim());
             }
-
-            string returnValue = "";
-            foreach (var x in finalLongSeq)
+            catch(Exception ex)
             {
-                returnValue = returnValue + " " + x;
+                return BadRequest($"Something went wrong. Please try again. {ex.Message}");
             }
-            return Ok(returnValue.Trim());
         }
 
     }
