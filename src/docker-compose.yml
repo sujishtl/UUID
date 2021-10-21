@@ -9,8 +9,8 @@ services:
     command: "dotnet run"
     ports:
       - "8001:8081"
-  integration-tests:
-    container_name: integration-tests
+  test:
+    container_name: test
     image: mcr.microsoft.com/dotnet/sdk:5.0
     volumes:
       - .:/src

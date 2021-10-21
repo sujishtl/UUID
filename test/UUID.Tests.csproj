@@ -25,25 +25,28 @@
     <ProjectReference Include="..\src\UUID.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <None Update="Files\TestCase5.txt">
+    <None Update="TestCase2.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Files\TestCase6.txt">
+    <None Update="TestCase5.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Files\TestCase7.txt">
+    <None Update="TestCase6.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Files\TestCase3.txt">
+    <None Update="TestCase7.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Files\TestCase8.txt">
+    <None Update="TestCase3.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Files\TestCase9.txt">
+    <None Update="TestCase8.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Files\TestCase4.txt">
+    <None Update="TestCase9.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCase4.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="xunit.runner.json">
