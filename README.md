@@ -27,4 +27,8 @@ First copy with all testcases based on the requirement
 
   cd src
   
-  docker-compose up integration-tests
+  docker-compose run test
+  
+  or 
+  
+  docker-compose up test
